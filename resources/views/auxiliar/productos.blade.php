@@ -1,5 +1,8 @@
 @extends('layouts.main')
 
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/auxiliar.css') }}">
+@endsection
 @section('content')
 <div class="container">
     <h1 class="mb-4">Administración de Productos</h1>
@@ -19,48 +22,10 @@
         </div>
     @endif
 
-    {{-- Formulario para nuevo producto --}}
+    {{-- Botón para mostrar formulario de nuevo producto --}}
     <div class="mb-4">
-        <h3>Crear Nuevo Producto</h3>
-        <form method="POST" action="{{ route('auxiliar.productos.store') }}" enctype="multipart/form-data">
-            @csrf
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="nombres">Nombre</label>
-                    <input type="text" class="form-control" id="nombres" name="nombres" required>
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="cantidad">Cantidad</label>
-                    <input type="number" class="form-control" id="cantidad" name="cantidad" min="0" required>
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="valor">Valor</label>
-                    <input type="number" class="form-control" id="valor" name="valor" min="0" required>
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="descuento">Descuento (%)</label>
-                    <input type="number" class="form-control" id="descuento" name="descuento" min="0" max="100" value="0">
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="categoria_id">Categoría</label>
-                    <select class="form-control" id="categoria_id" name="categoria_id" required>
-                        <option value="">Seleccione...</option>
-                        @foreach($categorias as $categoria)
-                            <option value="{{ $categoria->id_categoria }}">{{ $categoria->nuevo_nombre }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="imagen">Imagen</label>
-                    <input type="file" class="form-control-file" id="imagen" name="imagen">
-                </div>
-                <div class="form-group col-md-6 align-self-end">
-                    <button type="submit" class="btn btn-primary">Crear Producto</button>
-                </div>
-            </div>
-        </form>
+        <button id="btn-mostrar-crear" class="btn btn-success mb-2">Crear Nuevo Producto</button>
+        <div id="form-crear-producto-container" style="display:none;"></div>
     </div>
 
     <hr>
@@ -79,9 +44,9 @@
                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="productos-tbody">
             @foreach($productos as $producto)
-                <tr>
+                <tr data-producto-id="{{ $producto->id }}">
                     <td>
                         @if($producto->imagen)
                             <img src="{{ asset('storage/' . $producto->imagen) }}" width="60" alt="{{ $producto->nombres }}">
@@ -93,12 +58,10 @@
                     <td>${{ number_format($producto->valor, 0) }}</td>
                     <td>{{ $producto->descuento }}%</td>
                     <td>
-                        <a href="{{ route('auxiliar.productos.edit', $producto->id) }}" class="btn btn-warning btn-sm">Editar</a>
-                        <form method="POST" action="{{ route('auxiliar.productos.destroy', $producto->id) }}" style="display:inline-block;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                        </form>
+                        <button class="btn btn-warning btn-sm btn-mostrar-editar">Editar</button>
+                        <button class="btn btn-danger btn-sm btn-mostrar-eliminar">Eliminar</button>
+                        <div class="form-editar-container mt-2" style="display:none;"></div>
+                        <div class="form-eliminar-container mt-2" style="display:none;"></div>
                     </td>
                 </tr>
             @endforeach
