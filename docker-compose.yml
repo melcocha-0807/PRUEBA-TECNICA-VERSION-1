@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  mariadb:
+    container_name: prueba_mariadb
+    image: mariadb:latest
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: ''
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: '1'
+      MARIADB_DATABASE: prueba_tecnica
+    ports:
+      - "3306:3306"
+    volumes:
+      - database:/var/lib/mysql
+    networks:
+      - prueba_network
+
+  phpmyadmin:
+    container_name: prueba_pma
+    image: phpmyadmin:latest
+    restart: always
+    environment:
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    ports:
+      - "81:80"
+    depends_on:
+      - mariadb
+    networks:
+      - prueba_network
+
+  app:
+    container_name: prueba_usc
+    build:
+      context: ./.dockerconfig
+      dockerfile: Dockerfile
+    volumes:
+      - .:/var/www
+    depends_on:
+      - mariadb
+    networks:
+      - prueba_network
+
+  server:
+    container_name: prueba_nginx
+    image: nginx:stable-alpine
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - .:/var/www
+    networks:
+      - prueba_network
+
+volumes:
+  database:
+
+networks:
+  prueba_network:
+    driver: bridge

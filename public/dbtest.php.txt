@@ -1,0 +1,16 @@
+<?php
+
+use Illuminate\Support\Facades\DB;
+
+require __DIR__ . '/../vendor/autoload.php';
+$app = require_once __DIR__ . '/../bootstrap/app.php';
+
+$kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
+$kernel->bootstrap();
+
+try {
+    DB::connection()->getPdo();
+    echo "✅ Conexión exitosa a la base de datos: " . DB::connection()->getDatabaseName();
+} catch (\Exception $e) {
+    echo "❌ Error de conexión: " . $e->getMessage();
+}
