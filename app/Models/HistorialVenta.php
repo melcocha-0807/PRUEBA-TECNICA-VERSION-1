@@ -14,11 +14,21 @@ class HistorialVenta extends Model
     protected $fillable = [
         'producto_id',
         'vendedor_id',
-        'comprador_id',
+        'usuario_id',
         'cantidad_venta',
         'subtotal',
         'descuento',
         'total',
+    ];
+
+    protected $casts = [
+        'producto_id' => 'integer',
+        'vendedor_id' => 'integer',
+        'comprador_id' => 'integer',
+        'cantidad_venta' => 'integer',
+        'subtotal' => 'decimal:2',
+        'descuento' => 'decimal:2',
+        'total' => 'decimal:2',
     ];
 
     public function producto()
@@ -33,6 +43,6 @@ class HistorialVenta extends Model
 
     public function comprador()
     {
-        return $this->belongsTo(Usuario::class, 'comprador_id');
+        return $this->belongsTo(Usuario::class, 'usuario_id');
     }
 }
