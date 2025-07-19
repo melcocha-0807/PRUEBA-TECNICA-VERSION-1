@@ -1,5 +1,8 @@
 @extends('layouts.main')
 
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/usuario.css') }}">
+@endsection
 @section('title', 'Inicio Usuario')
 
 @section('content')

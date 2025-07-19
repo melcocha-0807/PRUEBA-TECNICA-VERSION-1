@@ -1,5 +1,8 @@
 @extends('layouts.main')
 
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/auxiliar.css') }}">
+@endsection
 @section('content')
 <div class="container mt-5">
     <h2 class="mb-4">Dashboard del Auxiliar de Bodega</h2>

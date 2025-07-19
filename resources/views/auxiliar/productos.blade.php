@@ -1,5 +1,8 @@
 @extends('layouts.main')
 
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/auxiliar.css') }}">
+@endsection
 @section('content')
 <div class="container">
     <h1 class="mb-4">Administración de Productos</h1>
@@ -19,8 +22,9 @@
         </div>
     @endif
 
-    {{-- Formulario para nuevo producto --}}
+    {{-- Botón para mostrar formulario de nuevo producto --}}
     <div class="mb-4">
+<<<<<<< HEAD
         <h3>Crear Nuevo Producto</h3>
         <form method="POST" action="{{ route('auxiliar.productos.store') }}" enctype="multipart/form-data">
             @csrf
@@ -57,6 +61,10 @@
                 </div>
             </div>
         </form>
+=======
+        <button id="btn-mostrar-crear" class="btn btn-success mb-2">Crear Nuevo Producto</button>
+        <div id="form-crear-producto-container" style="display:none;"></div>
+>>>>>>> origin/master
     </div>
 
     <hr>
@@ -74,9 +82,9 @@
                                 <th>Acciones</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="productos-tbody">
             @foreach($productos as $producto)
-                <tr>
+                <tr data-producto-id="{{ $producto->id }}">
                     <td>
                         @if($producto->imagen)
                             <img src="{{ asset('storage/' . $producto->imagen) }}" width="60" alt="{{ $producto->nombres }}">
@@ -86,6 +94,7 @@
                     <td>{{ $producto->categoria->nombre_categoria }}</td>
                     <td>{{ $producto->cantidad }}</td>
                     <td>${{ number_format($producto->valor, 0) }}</td>
+<<<<<<< HEAD
                                         <td>
                         <a href="{{ route('auxiliar.productos.edit', $producto->id) }}" class="btn btn-warning btn-sm">Editar</a>
                         <form method="POST" action="{{ route('auxiliar.productos.destroy', $producto->id) }}" style="display:inline-block;">
@@ -93,6 +102,14 @@
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                         </form>
+=======
+                    <td>{{ $producto->descuento }}%</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm btn-mostrar-editar">Editar</button>
+                        <button class="btn btn-danger btn-sm btn-mostrar-eliminar">Eliminar</button>
+                        <div class="form-editar-container mt-2" style="display:none;"></div>
+                        <div class="form-eliminar-container mt-2" style="display:none;"></div>
+>>>>>>> origin/master
                     </td>
                 </tr>
             @endforeach

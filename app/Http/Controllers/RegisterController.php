@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class RegisterController extends Controller
 {
@@ -22,13 +23,48 @@ class RegisterController extends Controller
             'email' => 'required|email|max:150|unique:usuarios,email',
             'telefono' => 'nullable|string|max:45',
             'rol' => 'required|in:usuario,vendedor,auxiliar de bodega',
-            'password' => 'required|string|min:6',
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'confirmed',
+                Password::min(8)
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+            ],
+        ], [
+            'identificacion.required' => 'La identificación es obligatoria.',
+            'identificacion.unique' => 'Esta identificación ya está registrada.',
+            'nombres.required' => 'El nombre es obligatorio.',
+            'apellidos.required' => 'Los apellidos son obligatorios.',
+            'email.required' => 'El email es obligatorio.',
+            'email.email' => 'El email debe tener un formato válido.',
+            'email.unique' => 'Este email ya está registrado.',
+            'rol.required' => 'Debe seleccionar un rol.',
+            'rol.in' => 'El rol seleccionado no es válido.',
+            'password.required' => 'La contraseña es obligatoria.',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
+            'password.confirmed' => 'La confirmación de contraseña no coincide.',
         ]);
 
-        $data = $request->only(['identificacion', 'nombres', 'apellidos', 'email', 'telefono', 'rol']);
-        $data['password'] = bcrypt($request->password); // O Hash::make()
-        Usuario::create($data);
+        try {
+            $usuario = Usuario::create([
+                'identificacion' => $request->identificacion,
+                'nombres' => $request->nombres,
+                'apellidos' => $request->apellidos,
+                'email' => $request->email,
+                'telefono' => $request->telefono,
+                'rol' => $request->rol,
+                'password' => Hash::make($request->password),
+            ]);
 
-        return redirect()->route('login')->with('success', 'Registro exitoso. Ahora puedes iniciar sesión.');
+            return redirect()->route('login')->with('success', 'Registro exitoso. Ahora puedes iniciar sesión.');
+            
+        } catch (\Exception $e) {
+            return redirect()->back()
+                ->withInput($request->except('password', 'password_confirmation'))
+                ->with('error', 'Error al crear el usuario. Inténtalo de nuevo.');
+        }
     }
 }

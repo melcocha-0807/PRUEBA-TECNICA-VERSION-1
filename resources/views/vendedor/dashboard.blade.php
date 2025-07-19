@@ -1,5 +1,8 @@
 @extends('layouts.main')
 
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/vendedor.css') }}">
+@endsection
 @section('title', 'Dashboard Vendedor')
 
 @section('content')

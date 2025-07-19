@@ -1,5 +1,8 @@
 @extends('layouts.main')
 
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/vendedor.css') }}">
+@endsection
 @section('content')
 <div class="container">
     <h1 class="mb-4">Panel de Ventas</h1>
