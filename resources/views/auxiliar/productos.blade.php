@@ -38,15 +38,11 @@
                     <input type="number" class="form-control" id="valor" name="valor" min="0" required>
                 </div>
                 <div class="form-group col-md-2">
-                    <label for="descuento">Descuento (%)</label>
-                    <input type="number" class="form-control" id="descuento" name="descuento" min="0" max="100" value="0">
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="categoria_id">Categoría</label>
-                    <select class="form-control" id="categoria_id" name="categoria_id" required>
+                    <label for="id_categoria">Categoría</label>
+                    <select class="form-control" id="id_categoria" name="id_categoria" required>
                         <option value="">Seleccione...</option>
                         @foreach($categorias as $categoria)
-                            <option value="{{ $categoria->id_categoria }}">{{ $categoria->nuevo_nombre }}</option>
+                            <option value="{{ $categoria->id_categoria }}">{{ $categoria->nuevo_nombre ?? $categoria->nombre_categoria }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -75,8 +71,7 @@
                 <th>Categoría</th>
                 <th>Cantidad</th>
                 <th>Valor</th>
-                <th>Descuento</th>
-                <th>Acciones</th>
+                                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -91,8 +86,7 @@
                     <td>{{ $producto->categoria->nombre_categoria }}</td>
                     <td>{{ $producto->cantidad }}</td>
                     <td>${{ number_format($producto->valor, 0) }}</td>
-                    <td>{{ $producto->descuento }}%</td>
-                    <td>
+                                        <td>
                         <a href="{{ route('auxiliar.productos.edit', $producto->id) }}" class="btn btn-warning btn-sm">Editar</a>
                         <form method="POST" action="{{ route('auxiliar.productos.destroy', $producto->id) }}" style="display:inline-block;">
                             @csrf

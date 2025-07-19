@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Product;
+use App\Models\Producto;
 use App\Models\Categoria;
 
 class UsuarioController extends Controller
@@ -12,7 +12,7 @@ class UsuarioController extends Controller
     // Vista principal del usuario con productos y categorías
     public function home()
     {
-        $productos = Product::with('categoria')->get();
+        $productos = Producto::with('categoria')->get();
         $categorias = Categoria::all();
         return view('usuario.home', compact('productos', 'categorias'));
     }
@@ -51,7 +51,7 @@ class UsuarioController extends Controller
     // Detalle de producto
     public function detalleProducto($id)
     {
-        $producto = Product::with('categoria')->findOrFail($id);
+        $producto = Producto::with('categoria')->findOrFail($id);
         return view('usuario.detalle_producto', compact('producto'));
     }
 
@@ -65,7 +65,7 @@ class UsuarioController extends Controller
     // Agregar producto al carrito
     public function agregarAlCarrito(Request $request, $id)
     {
-        $producto = Product::findOrFail($id);
+        $producto = Producto::findOrFail($id);
         $cantidad = (int) $request->input('cantidad', 1);
 
         $carrito = session('carrito', []);

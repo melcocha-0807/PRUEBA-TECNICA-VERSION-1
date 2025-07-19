@@ -24,7 +24,7 @@
                                 <a class="nav-link" href="{{ route('usuario.home') }}">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('carrito.index') }}">Carrito</a>
+                                <a class="nav-link" href="{{ route('usuario.carrito') }}">Carrito</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('usuario.catalogo') }}">Catálogo</a>
@@ -32,9 +32,6 @@
                         @elseif(auth()->user()->rol === 'vendedor')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('vendedor.dashboard') }}">Dashboard</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('vendedor.panel') }}">Panel de Ventas</a>
                             </li>
                         @elseif(auth()->user()->rol === 'auxiliar de bodega' || auth()->user()->rol === 'auxiliar')
                             <li class="nav-item">

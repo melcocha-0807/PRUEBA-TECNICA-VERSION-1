@@ -36,7 +36,12 @@ Route::middleware(['auth', 'role:usuario'])->group(function () {
     Route::post('/carrito/agregar/{id}', [UsuarioController::class, 'agregarAlCarrito'])->name('carrito.agregar');
     Route::post('/carrito/quitar/{itemId}', [UsuarioController::class, 'eliminarDelCarrito'])->name('carrito.quitar');
     Route::post('/carrito/checkout', [UsuarioController::class, 'realizarPedido'])->name('carrito.checkout');
+
+    // detalle carrito
+    Route::get('/producto/{id}', [UsuarioController::class, 'detalleProducto'])->name('usuario.detalle_producto');
 });
+
+Route::get('/test-aux', [AuxiliarController::class, 'productos']);
 
 Route::middleware(['web', 'auth', 'role:auxiliar de bodega'])->group(function () {
     // Dashboard auxiliar
@@ -57,7 +62,7 @@ Route::middleware(['web', 'auth', 'role:auxiliar de bodega'])->group(function ()
 
 Route::middleware(['auth', 'role:vendedor'])->group(function () {
     // Panel principal: historial, productos, compradores
-    Route::get('/vendedor/panel', [VendedorController::class, 'panel'])->name('vendedor.panel');
+    Route::get('/vendedor/dashboard', [VendedorController::class, 'panel'])->name('vendedor.dashboard');
     // Registrar venta
     Route::post('/vendedor/venta', [VendedorController::class, 'registrarVenta'])->name('vendedor.registrarVenta');
 });

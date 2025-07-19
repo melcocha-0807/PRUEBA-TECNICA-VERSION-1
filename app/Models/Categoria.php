@@ -10,7 +10,7 @@ class Categoria extends Model
     use HasFactory;
 
     // Nombre explícito de la tabla
-    protected $table = 'categoria';
+    protected $table = 'categorias';
 
     // Nombre de la clave primaria personalizada
     protected $primaryKey = 'id_categoria';
@@ -19,7 +19,7 @@ class Categoria extends Model
     public $timestamps = true;
 
     // Campos asignables en masa
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nuevo_nombre'];
 
     // Relación con productos
     public function productos()

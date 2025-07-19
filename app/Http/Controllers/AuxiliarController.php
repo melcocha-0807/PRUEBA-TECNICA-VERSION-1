@@ -23,8 +23,7 @@ class AuxiliarController extends Controller
             'nombres' => 'required|string|max:255',
             'cantidad' => 'required|integer|min:0',
             'valor' => 'required|integer|min:0',
-            'categoria_id' => 'required|exists:categorias,id_categoria',
-            'descuento' => 'nullable|integer|min:0|max:100',
+            'id_categoria' => 'required|exists:categorias,id_categoria',
             'imagen' => 'nullable|image|max:2048',
         ]);
 
@@ -53,8 +52,7 @@ class AuxiliarController extends Controller
             'nombres' => 'required|string|max:255',
             'cantidad' => 'required|integer|min:0',
             'valor' => 'required|integer|min:0',
-            'categoria_id' => 'required|exists:categorias,id_categoria',
-            'descuento' => 'nullable|integer|min:0|max:100',
+            'id_categoria' => 'required|exists:categorias,id_categoria',
             'imagen' => 'nullable|image|max:2048',
         ]);
 

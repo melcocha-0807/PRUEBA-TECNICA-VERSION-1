@@ -19,7 +19,10 @@ class RoleMiddleware
     public function handle(Request $request, Closure $next, $role)
     {
         $user = Auth::user();
-        if (!$user || $user->rol !== $role) {
+        $validRoles = ['usuario', 'vendedor', 'auxiliar de bodega'];
+        $userRole = trim(mb_strtolower($user->rol ?? ''));
+        $requiredRole = trim(mb_strtolower($role));
+        if (!$user || !in_array($userRole, $validRoles) || $userRole !== $requiredRole) {
             abort(403, 'No tienes permiso para acceder a esta sección.');
         }
         return $next($request);

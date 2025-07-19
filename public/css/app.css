@@ -1,207 +1,50 @@
-/* ==================================================
-🔁 ESTILOS GENERALES (APLICAN A TODAS LAS VISTAS)
-================================================== */
+/* Paleta principal: tonos lilas y morados */
 :root {
     --main-purple: #7c3aed;
     --main-lilac: #a78bfa;
     --main-dark: #5b21b6;
     --main-light: #ede9fe;
-    --main-white: #fff;
-    --main-shadow: 0 2px 8px rgba(124,58,237,0.08);
 }
 
 body {
     background-color: var(--main-light);
-    color: var(--main-dark);
-    font-family: 'Nunito', sans-serif;
-    font-weight: 200;
-    min-height: 100vh;
-    margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: var(--main-dark);
-    font-weight: 600;
-}
-
-.container, .card {
-    background: var(--main-white);
-    border-radius: 8px;
-    box-shadow: var(--main-shadow);
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-}
-
-/* NAVBAR */
-.navbar {
-    background: var(--main-lilac) !important;
-    border-bottom: 2px solid var(--main-purple);
-}
-.navbar-brand, .navbar-nav .nav-link {
-    color: var(--main-dark) !important;
-    font-weight: 600;
-}
-
-/* BOTONES */
 .btn-primary,
 .btn-primary:active,
 .btn-primary:focus {
     background-color: var(--main-purple) !important;
     border-color: var(--main-purple) !important;
-    color: var(--main-white) !important;
 }
+
 .btn-primary:hover {
     background-color: var(--main-dark) !important;
     border-color: var(--main-dark) !important;
 }
-.btn-success {
-    background-color: var(--main-lilac) !important;
-    border-color: var(--main-purple) !important;
-    color: var(--main-dark) !important;
-}
-.btn-success:hover {
-    background-color: var(--main-purple) !important;
-    color: var(--main-white) !important;
-}
 
-/* TABLAS */
 .table thead {
     background-color: var(--main-purple);
-    color: var(--main-white);
-}
-.table-striped tbody tr:nth-of-type(odd) {
-    background-color: var(--main-light);
-}
-.table-bordered {
-    border-color: var(--main-purple);
+    color: #fff;
 }
 
-/* FORMULARIOS (CENTRADOS) */
-form {
-    max-width: 600px;
-    margin: 30px auto;
+h1, h2, h3, h4, h5, h6 {
+    color: var(--main-dark);
 }
+
+.card, .container {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(124,58,237,0.08);
+}
+
 .form-control:focus {
     border-color: var(--main-purple);
     box-shadow: 0 0 0 0.2rem rgba(124,58,237,0.25);
 }
 
-/* ALERTAS */
 .alert-primary {
     background-color: var(--main-lilac);
     color: var(--main-dark);
     border-color: var(--main-purple);
 }
-.alert-success {
-    background-color: #d1fae5;
-    color: #065f46;
-    border-color: #10b981;
-}
-.alert-danger {
-    background-color: #fee2e2;
-    color: #991b1b;
-    border-color: #ef4444;
-}
 
-/* ENLACES */
-.links > a {
-    color: var(--main-purple);
-    padding: 0 25px;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: .1rem;
-    text-decoration: none;
-    text-transform: uppercase;
-}
-
-/* POSICIONAMIENTO Y TÍTULO INICIAL */
-.flex-center {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
-.full-height {
-    height: 100vh;
-}
-.position-ref {
-    position: relative;
-}
-.content {
-    text-align: center;
-}
-.title {
-    font-size: 64px;
-    margin-bottom: 30px;
-    color: var(--main-purple);
-}
-
-/* ANIMACIONES GENERALES */
-a, button, .btn, .card, img, .form-control, .navbar, .table {
-    transition: all 0.3s ease-in-out;
-}
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(124,58,237,0.15);
-}
-.card img:hover, img.producto:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-.btn:active {
-    transform: scale(0.96);
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-.container, .card, .content {
-    animation: fadeIn 0.6s ease-out;
-}
-
-
-/* ==================================================
-👤 LOGIN / REGISTRO / PERFIL
-================================================== */
-.auth-form {
-    margin-top: 50px;
-    background: var(--main-white);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: var(--main-shadow);
-}
-.auth-form h1 {
-    font-size: 32px;
-    margin-bottom: 1rem;
-    color: var(--main-purple);
-}
-.auth-form input {
-    margin-bottom: 15px;
-}
-
-
-/* ==================================================
-🛒 PRODUCTOS / CARRITO / CATÁLOGO
-================================================== */
-.producto-img {
-    max-width: 100%;
-    height: auto;
-    transition: transform 0.3s ease-in-out;
-}
-.producto-img:hover {
-    transform: scale(1.05);
-}
-.card-title {
-    font-weight: 600;
-}
-.card-text {
-    font-size: 14px;
-    color: var(--main-dark);
-}
-.precio-original {
-    text-decoration: line-through;
-    color: #9ca3af;
-}
-.precio-final {
-    font-weight: bold;
-    color: var(--main-purple);
-}

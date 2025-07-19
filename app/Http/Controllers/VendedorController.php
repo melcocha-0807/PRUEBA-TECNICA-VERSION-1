@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Product;
+use App\Models\Producto;
 use App\Models\Usuario;
 use App\Models\HistorialVenta;
 
@@ -13,7 +13,7 @@ class VendedorController extends Controller
     // Panel de ventas e historial
     public function panel()
     {
-        $productos = Product::all();
+        $productos = Producto::all();
         $compradores = Usuario::where('rol', 'usuario')->get();
         $ventas = HistorialVenta::with(['producto', 'comprador'])
             ->where('vendedor_id', Auth::id())
@@ -32,7 +32,7 @@ class VendedorController extends Controller
             'comprador_id' => 'required|exists:usuarios,id',
         ]);
 
-        $producto = Product::findOrFail($data['producto_id']);
+        $producto = Producto::findOrFail($data['producto_id']);
 
         // Validar stock disponible
         if ($producto->cantidad < $data['cantidad_venta']) {

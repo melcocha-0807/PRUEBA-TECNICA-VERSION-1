@@ -28,7 +28,7 @@ class AuthController extends Controller
             } elseif ($user->rol === 'auxiliar de bodega') {
                 return redirect()->route('auxiliar.dashboard');
             } elseif ($user->rol === 'usuario') {
-                return redirect()->route('usuario.catalogo');
+                return redirect()->route('usuario.home');
             }
             return redirect('/'); // Rol desconocido
         }
