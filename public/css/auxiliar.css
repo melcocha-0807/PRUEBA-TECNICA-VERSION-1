@@ -40,3 +40,27 @@ td {
     background: #f8d7da;
     color: #842029;
 }
+
+/* Centrado total en celdas de la tabla */
+.table th, .table td {
+    text-align: center !important;
+    vertical-align: middle !important;
+    height: 70px;
+    padding: 0 !important;
+}
+
+/* Ajustar tamaño y presentación de la imagen */
+.imagen-producto-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.imagen-producto {
+    max-width: 35px;
+    max-height: 35px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
