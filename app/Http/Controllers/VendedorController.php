@@ -14,13 +14,16 @@ class VendedorController extends Controller
     public function panel()
     {
         $productos = Producto::all();
-        $compradores = Usuario::where('rol', 'usuario')->get();
-        $ventas = HistorialVenta::with(['producto', 'comprador'])
+        $usuarios = Usuario::where('rol', 'usuario')->get();
+        $ventas = HistorialVenta::with(['producto', 'usuario'])
             ->where('vendedor_id', Auth::id())
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('vendedor.panel', compact('productos', 'compradores', 'ventas'));
+        $usuario = Auth::user();
+
+        // Renderiza la vista panel para la ruta vendedor.dashboard
+        return view('vendedor.panel', compact('productos', 'usuarios', 'ventas'));
     }
 
     // Registrar nueva venta
@@ -29,7 +32,7 @@ class VendedorController extends Controller
         $data = $request->validate([
             'producto_id' => 'required|exists:productos,id',
             'cantidad_venta' => 'required|integer|min:1',
-            'comprador_id' => 'required|exists:usuarios,id',
+            'usuario_id' => 'required|exists:usuarios,id',
         ]);
 
         $producto = Producto::findOrFail($data['producto_id']);
@@ -47,7 +50,7 @@ class VendedorController extends Controller
         HistorialVenta::create([
             'producto_id'    => $producto->id,
             'vendedor_id'    => Auth::id(),
-            'comprador_id'   => $data['comprador_id'],
+            'usuario_id'   => $data['usuario_id'],
             'cantidad_venta' => $data['cantidad_venta'],
             'subtotal'       => $subtotal,
             'descuento'      => $descuento,

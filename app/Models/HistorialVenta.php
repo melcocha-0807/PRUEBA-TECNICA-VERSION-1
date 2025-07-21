@@ -24,7 +24,7 @@ class HistorialVenta extends Model
     protected $casts = [
         'producto_id' => 'integer',
         'vendedor_id' => 'integer',
-        'comprador_id' => 'integer',
+        'usuario_id' => 'integer',
         'cantidad_venta' => 'integer',
         'subtotal' => 'decimal:2',
         'descuento' => 'decimal:2',
@@ -41,7 +41,7 @@ class HistorialVenta extends Model
         return $this->belongsTo(Usuario::class, 'vendedor_id');
     }
 
-    public function comprador()
+    public function usuario()
     {
         return $this->belongsTo(Usuario::class, 'usuario_id');
     }

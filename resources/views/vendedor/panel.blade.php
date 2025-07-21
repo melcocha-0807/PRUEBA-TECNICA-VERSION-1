@@ -25,11 +25,11 @@
                     <input type="number" class="form-control" id="cantidad_venta" name="cantidad_venta" min="1" required>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="comprador_id">Comprador</label>
-                    <select class="form-control" id="comprador_id" name="comprador_id" required>
+                    <label for="usuario_id">usuario</label>
+                    <select class="form-control" id="usuario_id" name="usuario_id" required>
                         <option value="">Seleccione...</option>
-                        @foreach($compradores as $comprador)
-                            <option value="{{ $comprador->id }}">{{ $comprador->nombres }} {{ $comprador->apellidos }}</option>
+                        @foreach($usuarios as $usuario)
+                            <option value="{{ $usuario->id }}">{{ $usuario->nombres }} {{ $usuario->apellidos }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -50,7 +50,7 @@
                 <th>Subtotal</th>
                 <th>Descuento</th>
                 <th>Total</th>
-                <th>Comprador</th>
+                <th>Usuario</th>
             </tr>
         </thead>
         <tbody>
@@ -62,7 +62,7 @@
                     <td>${{ number_format($venta->subtotal, 0) }}</td>
                     <td>{{ $venta->descuento }}%</td>
                     <td>${{ number_format($venta->total, 0) }}</td>
-                    <td>{{ $venta->comprador->nombres }} {{ $venta->comprador->apellidos }}</td>
+                    <td>{{ $venta->usuario->nombres }} {{ $venta->usuario->apellidos }}</td>
                 </tr>
             @endforeach
         </tbody>

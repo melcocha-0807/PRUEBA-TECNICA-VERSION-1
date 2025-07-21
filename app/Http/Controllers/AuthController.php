@@ -23,7 +23,7 @@ class AuthController extends Controller
             $user = Auth::user();
 
             if ($user->rol === 'vendedor') {
-                return redirect()->route('vendedor.panel'); // ← nombre correcto
+                return redirect()->route('vendedor.dashboard');
             } elseif ($user->rol === 'auxiliar de bodega') {
                 return redirect()->route('auxiliar.dashboard');
             } elseif ($user->rol === 'usuario') {

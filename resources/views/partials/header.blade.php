@@ -17,7 +17,7 @@
                         </li>
                     @elseif(Auth::user()->rol === 'vendedor')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('vendedor.panel') }}">Panel de Ventas</a>
+                            <a class="nav-link" href="{{ route('vendedor.dashboard') }}">Panel de Ventas</a>
                         </li>
                     @elseif(Auth::user()->rol === 'auxiliar de bodega' || Auth::user()->rol === 'auxiliar')
                         <li class="nav-item">
