@@ -40,7 +40,7 @@ class AuxiliarController extends Controller
     {
         $producto = Producto::findOrFail($id);
         $categorias = Categoria::all();
-        return view('auxiliar.editar_producto', compact('producto', 'categorias'));
+        return view('auxiliar.edit_form', compact('producto', 'categorias'));
     }
 
     // Actualizar producto
@@ -61,8 +61,19 @@ class AuxiliarController extends Controller
         }
 
         $producto->update($data);
-        return redirect()->route('auxiliar.productos')->with('success', 'Producto actualizado correctamente');
-    }
+
+        // ✅ Si es una petición AJAX, devolver JSON
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'mensaje' => 'Producto actualizado correctamente',
+                'producto' => $producto
+            ]);
+        }
+    // Si NO es AJAX, redirige normalmente
+    
+    return redirect()->route('auxiliar.productos')->with('success', 'Producto actualizado correctamente');
+}
 
     // Eliminar producto
     public function destroyProducto($id)

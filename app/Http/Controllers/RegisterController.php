@@ -25,13 +25,8 @@ class RegisterController extends Controller
             'rol' => 'required|in:usuario,vendedor,auxiliar de bodega',
             'password' => [
                 'required',
-                'string',
-                'min:8',
-                'confirmed',
                 Password::min(8)
-                    ->mixedCase()
                     ->numbers()
-                    ->symbols()
             ],
         ], [
             'identificacion.required' => 'La identificación es obligatoria.',
@@ -45,7 +40,6 @@ class RegisterController extends Controller
             'rol.in' => 'El rol seleccionado no es válido.',
             'password.required' => 'La contraseña es obligatoria.',
             'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
-            'password.confirmed' => 'La confirmación de contraseña no coincide.',
         ]);
 
         try {
@@ -63,7 +57,7 @@ class RegisterController extends Controller
             
         } catch (\Exception $e) {
             return redirect()->back()
-                ->withInput($request->except('password', 'password_confirmation'))
+                ->withInput($request->except('password'))
                 ->with('error', 'Error al crear el usuario. Inténtalo de nuevo.');
         }
     }

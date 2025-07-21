@@ -10,11 +10,16 @@ use App\Models\Categoria;
 class UsuarioController extends Controller
 {
     // Vista principal del usuario con productos y categorías
-    public function home()
+    public function home(Request $request)
     {
-        $productos = Producto::with('categoria')->get();
+        $categoriaId = $request->input('categoria');
+        $query = Producto::with('categoria');
+        if ($categoriaId) {
+            $query->where('id_categoria', $categoriaId);
+        }
+        $productos = $query->get();
         $categorias = Categoria::all();
-        return view('usuario.home', compact('productos', 'categorias'));
+        return view('usuario.home', compact('productos', 'categorias', 'categoriaId'));
     }
 
     // Mostrar vista de perfil

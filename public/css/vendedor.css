@@ -1,7 +1,7 @@
 body, html {
     font-family: 'Times New Roman', Times, serif;
-    background: #f8fafc;
-    color: #222;
+    background: var(--main-light);
+    color: var(--main-dark);
 }
 .container, .container-fluid {
     display: flex;
@@ -10,33 +10,82 @@ body, html {
     justify-content: center;
 }
 form {
-    margin: 0 auto;
+    margin: 0 auto 2rem auto;
     max-width: 600px;
-    background: #fff;
-    padding: 2rem;
+    background: var(--main-white);
+    padding: 2rem 2rem 1.5rem 2rem;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    box-shadow: 0 2px 8px var(--main-lilac);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
 }
-.btn-primary, .btn-success, .btn-warning, .btn-danger {
-    font-family: 'Times New Roman', Times, serif;
+.form-row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    justify-content: center;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.2rem;
+    min-width: 180px;
+    flex: 1 1 180px;
+}
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+.form-control {
+    border-radius: 8px;
+    border: 1px solid var(--main-lilac);
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+}
+.form-control:focus {
+    border-color: var(--main-purple);
+    box-shadow: 0 0 0 0.2rem var(--main-lilac);
+    outline: none;
+}
+button, .btn {
+    margin-top: 0.5rem;
+    min-width: 120px;
 }
 .table {
-    background: #fff;
+    background: var(--main-white);
     border-radius: 8px;
     overflow: hidden;
 }
 th {
-    background: #1d3557;
-    color: #fff;
+    background: var(--main-purple);
+    color: var(--main-white);
 }
 td {
     vertical-align: middle;
 }
 .alert-success {
-    background: #d1e7dd;
-    color: #0f5132;
+    background: var(--main-lilac);
+    color: var(--main-dark);
 }
 .alert-danger {
-    background: #f8d7da;
-    color: #842029;
+    background: var(--main-purple);
+    color: var(--main-white);
+}
+@media (max-width: 768px) {
+    form {
+        padding: 1rem 0.5rem;
+        max-width: 98vw;
+    }
+    .form-row {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    .form-group {
+        min-width: 100%;
+    }
 }

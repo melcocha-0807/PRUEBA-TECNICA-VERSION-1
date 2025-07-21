@@ -4,10 +4,37 @@
     --main-lilac: #a78bfa;
     --main-dark: #5b21b6;
     --main-light: #ede9fe;
+    --main-white: #fff;
 }
 
 body {
     background-color: var(--main-light);
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    color: var(--main-dark);
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container, .card {
+    background: var(--main-white);
+    border-radius: 14px;
+    box-shadow: 0 2px 16px var(--main-lilac);
+    padding: 2.5rem 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--main-dark);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.btn, button, input[type="submit"] {
+    transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+    border-radius: 8px !important;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .btn-primary,
@@ -15,35 +42,160 @@ body {
 .btn-primary:focus {
     background-color: var(--main-purple) !important;
     border-color: var(--main-purple) !important;
+    color: var(--main-white) !important;
+    box-shadow: 0 2px 8px var(--main-lilac);
 }
 
 .btn-primary:hover {
     background-color: var(--main-dark) !important;
     border-color: var(--main-dark) !important;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 4px 16px var(--main-lilac);
 }
 
-.table thead {
-    background-color: var(--main-purple);
-    color: #fff;
+.form-row, .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: var(--main-dark);
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
 }
 
-.card, .container {
-    background: #fff;
+.form-control {
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(124,58,237,0.08);
+    border: 1px solid var(--main-lilac);
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: border 0.2s, box-shadow 0.2s;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    background: var(--main-white);
+    color: var(--main-dark);
 }
 
 .form-control:focus {
     border-color: var(--main-purple);
-    box-shadow: 0 0 0 0.2rem rgba(124,58,237,0.25);
+    box-shadow: 0 0 0 0.2rem var(--main-lilac);
+    outline: none;
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--main-dark);
+}
+
+.table {
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--main-white);
+    box-shadow: 0 2px 16px var(--main-lilac);
+}
+
+.table thead {
+    background-color: var(--main-purple);
+    color: var(--main-white);
+}
+
+.table tbody tr {
+    transition: background 0.2s;
+}
+
+.table tbody tr:hover {
+    background: var(--main-lilac);
+    color: var(--main-dark);
 }
 
 .alert-primary {
     background-color: var(--main-lilac);
     color: var(--main-dark);
     border-color: var(--main-purple);
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], select {
+    border-radius: 8px;
+    border: 1px solid var(--main-lilac);
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    transition: border 0.2s, box-shadow 0.2s;
+    background: var(--main-white);
+    color: var(--main-dark);
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="number"]:focus, select:focus {
+    border-color: var(--main-purple);
+    box-shadow: 0 0 0 0.2rem var(--main-lilac);
+    outline: none;
+}
+
+/* Animaciones suaves para tarjetas y formularios */
+.card, .container, form, .table {
+    animation: fadeInUp 0.7s cubic-bezier(.39,.575,.565,1.000) both;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Navbar y header */
+.navbar, .navbar-nav, .navbar-brand {
+    background: var(--main-purple) !important;
+    color: var(--main-white) !important;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 2px 8px var(--main-lilac);
+}
+
+.nav-link, .navbar-brand {
+    color: var(--main-white) !important;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+}
+
+.nav-link:hover, .navbar-brand:hover {
+    color: var(--main-lilac) !important;
+}
+
+/* Espaciado general */
+.mt-4, .my-4 { margin-top: 2rem !important; }
+.mb-4, .my-4 { margin-bottom: 2rem !important; }
+.pt-4, .py-4 { padding-top: 2rem !important; }
+.pb-4, .py-4 { padding-bottom: 2rem !important; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container, .card {
+        padding: 1rem 0.5rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    form {
+        padding: 0.5rem;
+    }
+}
+
+.table img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
 }

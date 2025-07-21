@@ -13,7 +13,7 @@
 
         <div class="col-md-6">
             <h2>{{ $producto->nombres }}</h2>
-            <p><strong>Categoría:</strong> {{ $producto->categoria->nombre_categoria }}</p>
+            <p><strong>Categoría:</strong> {{ $producto->categoria->nuevo_nombre ?? $producto->categoria->nombre_categoria }}</p>
             <p><strong>Stock:</strong> {{ $producto->cantidad }}</p>
 
             @if($producto->descuento > 0)
