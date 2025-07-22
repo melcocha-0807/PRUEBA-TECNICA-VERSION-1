@@ -55,7 +55,7 @@ Route::middleware(['web', 'auth', 'role:auxiliar de bodega'])->group(function ()
     // Editar producto (formulario)
     Route::get('/productos-auxiliar/{id}/editar', [AuxiliarController::class, 'editProducto'])->name('auxiliar.productos.edit');
     // Actualizar producto
-    Route::put('/productos-auxiliar/{id}', [AuxiliarController::class, 'updateProducto'])->name('auxiliar.productos.update');
+    Route::post('/productos-auxiliar/{id}', [AuxiliarController::class, 'updateProducto'])->name('auxiliar.productos.update');
     // Eliminar producto
     Route::delete('/productos-auxiliar/{id}', [AuxiliarController::class, 'destroyProducto'])->name('auxiliar.productos.destroy');
 });

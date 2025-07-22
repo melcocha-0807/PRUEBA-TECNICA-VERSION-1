@@ -1,91 +1,99 @@
-body, html {
-    font-family: 'Times New Roman', Times, serif;
-    background: var(--main-light);
-    color: var(--main-dark);
+main.container {
+    display: flex; /* Usar flexbox para el layout */
+    flex-direction: column; /* Dirección de los elementos en columna */
+    align-items: center; /* Centrar elementos horizontalmente */
+    justify-content: center; /* Centrar elementos verticalmente */
 }
-.container, .container-fluid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
+
 form {
-    margin: 0 auto 2rem auto;
-    max-width: 600px;
-    background: var(--main-white);
-    padding: 2rem 2rem 1.5rem 2rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px var(--main-lilac);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.2rem;
+    margin: 0 auto 2rem auto; /* Centrar formulario con margen inferior */
+    max-width: 600px; /* Ancho máximo del formulario */
+    background: var(--main-white); /* Fondo blanco */
+    padding: 2rem 2rem 1.5rem 2rem; /* Relleno interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 2px 8px var(--main-lilac); /* Sombra lila */
+    display: flex; /* Usar flexbox */
+    flex-direction: column; /* Dirección en columna */
+    align-items: center; /* Centrar elementos */
+    gap: 1.2rem; /* Espacio entre elementos */
 }
+
 .form-row {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.2rem;
-    justify-content: center;
+    width: 100%; /* Ancho completo */
+    display: flex; /* Usar flexbox */
+    flex-wrap: wrap; /* Permitir ajuste de línea */
+    gap: 1.2rem; /* Espacio entre elementos */
+    justify-content: center; /* Centrar elementos */
 }
+
 .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.2rem;
-    min-width: 180px;
-    flex: 1 1 180px;
+    display: flex; /* Usar flexbox */
+    flex-direction: column; /* Dirección en columna */
+    margin-bottom: 1.2rem; /* Margen inferior */
+    min-width: 180px; /* Ancho mínimo */
+    flex: 1 1 180px; /* Flexibilidad de tamaño */
 }
+
 .form-group label {
-    margin-bottom: 0.5rem;
-    font-weight: 500;
+    margin-bottom: 0.5rem; /* Margen inferior */
+    font-weight: 500; /* Peso de fuente medio */
 }
+
 .form-control {
-    border-radius: 8px;
-    border: 1px solid var(--main-lilac);
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    width: 100%;
+    border-radius: 8px; /* Bordes redondeados */
+    border: 1px solid var(--main-lilac); /* Borde lila */
+    padding: 0.75rem 1rem; /* Relleno interno */
+    font-size: 1rem; /* Tamaño de fuente */
+    margin-bottom: 0.5rem; /* Margen inferior */
+    width: 100%; /* Ancho completo */
 }
+
 .form-control:focus {
-    border-color: var(--main-purple);
-    box-shadow: 0 0 0 0.2rem var(--main-lilac);
-    outline: none;
+    border-color: var(--main-purple); /* Borde púrpura al enfocar */
+    box-shadow: 0 0 0 0.2rem var(--main-lilac); /* Sombra lila */
+    outline: none; /* Sin contorno */
 }
+
 button, .btn {
-    margin-top: 0.5rem;
-    min-width: 120px;
+    margin-top: 0.5rem; /* Margen superior */
+    min-width: 120px; /* Ancho mínimo */
 }
+
 .table {
-    background: var(--main-white);
-    border-radius: 8px;
-    overflow: hidden;
+    background: var(--main-white); /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    overflow: hidden; /* Ocultar desbordamiento */
 }
+
 th {
-    background: var(--main-purple);
-    color: var(--main-white);
+    background: var(--main-purple); /* Fondo púrpura */
+    color: var(--main-white); /* Texto blanco */
 }
+
 td {
-    vertical-align: middle;
+    vertical-align: middle; /* Alineación vertical al centro */
 }
+
 .alert-success {
-    background: var(--main-lilac);
-    color: var(--main-dark);
+    background: var(--main-lilac); /* Fondo lila */
+    color: var(--main-dark); /* Texto oscuro */
 }
+
 .alert-danger {
-    background: var(--main-purple);
-    color: var(--main-white);
+    background: var(--main-purple); /* Fondo púrpura */
+    color: var(--main-white); /* Texto blanco */
 }
+
 @media (max-width: 768px) {
     form {
-        padding: 1rem 0.5rem;
-        max-width: 98vw;
+        padding: 1rem 0.5rem; /* Relleno interno */
+        max-width: 98vw; /* Ancho máximo relativo a la ventana */
     }
     .form-row {
-        flex-direction: column;
-        gap: 0.8rem;
+        flex-direction: column; /* Dirección en columna */
+        gap: 0.8rem; /* Espacio entre elementos */
     }
     .form-group {
-        min-width: 100%;
+        min-width: 100%; /* Ancho mínimo completo */
     }
 }

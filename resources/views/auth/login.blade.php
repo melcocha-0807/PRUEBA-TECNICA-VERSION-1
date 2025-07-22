@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="container mt-5" style="max-width: 400px;">
+<div class="container mt-5" style="max-width: 600px;">
     <h3 class="mb-4 text-center">Iniciar Sesión</h3>
     @if($errors->any())
         <div class="alert alert-danger">

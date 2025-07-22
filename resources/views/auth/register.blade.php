@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="container mt-4" style="max-width: 500px;">
+<div class="container mt-4" style="max-width: 700px;">
     <h1 class="mb-4 text-center">Registro de Usuario</h1>
 
     {{-- Mostrar errores de validación --}}

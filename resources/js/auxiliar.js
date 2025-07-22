@@ -21,38 +21,31 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Delegación para mostrar formularios de editar y eliminar
-    document.getElementById('productos-tbody').addEventListener('click', async function (e) {
-        const tr = e.target.closest('tr[data-producto-id]');
-        if (!tr) return;
-        const productoId = tr.getAttribute('data-producto-id');
-        // Editar
-        if (e.target.classList.contains('btn-mostrar-editar')) {
-            const container = tr.querySelector('.form-editar-container');
-            if (container.style.display === 'none' || container.innerHTML === '') {
-                const res = await fetch(`/auxiliar/productos/${productoId}/edit`);
-                const html = await res.text();
-                container.innerHTML = html;
-                container.style.display = 'block';
-            } else {
-                container.innerHTML = '';
-                container.style.display = 'none';
+    document.querySelectorAll('.edit-product').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            const productId = this.getAttribute('data-id');
+            const productRow = this.closest('tr');
+            const productName = productRow.querySelector('td:nth-child(2)').textContent.trim();
+            const productQuantity = productRow.querySelector('td:nth-child(4)').textContent.trim();
+            const productValue = productRow.querySelector('td:nth-child(5)').textContent.replace('$', '').replace(',', '').trim();
+            const productCategory = productRow.querySelector('td:nth-child(3)').textContent.trim();
+
+            document.getElementById('edit_nombres').value = productName;
+            document.getElementById('edit_cantidad').value = productQuantity;
+            document.getElementById('edit_valor').value = productValue;
+
+            const categorySelect = document.getElementById('edit_categoria_id');
+            for (let i = 0; i < categorySelect.options.length; i++) {
+                if (categorySelect.options[i].text.trim() === productCategory) {
+                    categorySelect.selectedIndex = i;
+                    break;
+                }
             }
-        }
-        // Eliminar
-        if (e.target.classList.contains('btn-mostrar-eliminar')) {
-            const container = tr.querySelector('.form-eliminar-container');
-            if (container.style.display === 'none' || container.innerHTML === '') {
-                container.innerHTML = `<form class="form-eliminar-producto" data-id="${productoId}">
-                    <p>¿Seguro que deseas eliminar este producto?</p>
-                    <button type="submit" class="btn btn-danger btn-sm">Confirmar</button>
-                    <button type="button" class="btn btn-secondary btn-sm btn-cancelar-eliminar">Cancelar</button>
-                </form>`;
-                container.style.display = 'block';
-            } else {
-                container.innerHTML = '';
-                container.style.display = 'none';
-            }
-        }
+
+            const editForm = document.getElementById('editForm');
+            editForm.action = `/productos-auxiliar/${productId}/editar`;
+        });
     });
 
     // Delegación para cancelar eliminar

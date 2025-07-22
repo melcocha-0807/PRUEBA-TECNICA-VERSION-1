@@ -35,14 +35,7 @@ class AuxiliarController extends Controller
         return redirect()->back()->with('success', 'Producto creado correctamente');
     }
 
-    // Mostrar formulario de edición
-    public function editProducto($id)
-    {
-        $producto = Producto::findOrFail($id);
-        $categorias = Categoria::all();
-        return view('auxiliar.edit_form', compact('producto', 'categorias'));
-    }
-
+    
     // Actualizar producto
     public function updateProducto(Request $request, $id)
     {
