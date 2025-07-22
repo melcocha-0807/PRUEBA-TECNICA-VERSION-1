@@ -30,37 +30,51 @@ class VendedorController extends Controller
     public function registrarVenta(Request $request)
     {
         $data = $request->validate([
-            'producto_id' => 'required|exists:productos,id',
-            'cantidad_venta' => 'required|integer|min:1',
+            'productos' => 'required|array|min:2', // Asegúrate de que se envían al menos dos productos
+            'productos.*.producto_id' => 'required|exists:productos,id',
+            'productos.*.cantidad_venta' => 'required|integer|min:1',
             'usuario_id' => 'required|exists:usuarios,id',
         ]);
 
-        $producto = Producto::findOrFail($data['producto_id']);
+        $totalSubtotal = 0;
+        $productosDiferentes = [];
 
-        // Validar stock disponible
-        if ($producto->cantidad < $data['cantidad_venta']) {
-            return redirect()->back()->with('error', 'No hay suficiente stock disponible para esta venta.');
+        foreach ($data['productos'] as $productoData) {
+            $producto = Producto::findOrFail($productoData['producto_id']);
+            $productosDiferentes[$producto->id] = true;
+
+            // Validar stock disponible
+            if ($producto->cantidad < $productoData['cantidad_venta']) {
+                return redirect()->back()->with('error', 'No hay suficiente stock disponible para esta venta.');
+            }
+
+            $subtotal = $producto->valor * $productoData['cantidad_venta'];
+            $totalSubtotal += $subtotal;
         }
 
-        $subtotal = $producto->valor * $data['cantidad_venta'];
-        $descuento = $producto->descuento ?? 0;
-        $total = $subtotal * (1 - $descuento / 100);
+        // Aplicar descuento si hay al menos dos productos diferentes
+        $descuento = count($productosDiferentes) >= 2 ? 20 : 0;
+        $totalDescuento = $totalSubtotal * ($descuento / 100);
+        $totalFinal = $totalSubtotal - $totalDescuento;
 
         // Registrar venta en historial
         HistorialVenta::create([
             'producto_id'    => $producto->id,
             'vendedor_id'    => Auth::id(),
             'usuario_id'   => $data['usuario_id'],
-            'cantidad_venta' => $data['cantidad_venta'],
-            'subtotal'       => $subtotal,
+            'cantidad_venta' => array_sum(array_column($data['productos'], 'cantidad_venta')),
+            'subtotal'       => $totalSubtotal,
             'descuento'      => $descuento,
-            'total'          => $total,
+            'total'          => $totalFinal,
         ]);
 
         // Actualizar stock
-        $producto->cantidad -= $data['cantidad_venta'];
-        $producto->save();
+        foreach ($data['productos'] as $productoData) {
+            $producto = Producto::findOrFail($productoData['producto_id']);
+            $producto->cantidad -= $productoData['cantidad_venta'];
+            $producto->save();
+        }
 
-        return redirect()->back()->with('success', 'Venta registrada correctamente.');
+        return redirect()->back()->with('success', 'Venta registrada correctamente con descuento.');
     }
 }

@@ -21,6 +21,35 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (() => {
 
 // Archivo principal JS para la aplicación POS
+
+$(document).ready(function () {
+    // Función para aplicar descuento automáticamente
+    function aplicarDescuento() {
+        let productosSeleccionados = {};
+        let descuentoAplicado = false;
+
+        // Suponiendo que tienes un formulario con productos seleccionados
+        $('select[name="producto_id"]').each(function () {
+            let productoId = $(this).val();
+            if (productoId) {
+                productosSeleccionados[productoId] = (productosSeleccionados[productoId] || 0) + 1;
+            }
+        });
+
+        // Verificar si hay al menos dos productos diferentes
+        if (Object.keys(productosSeleccionados).length >= 2) {
+            descuentoAplicado = true;
+            $('#descuento').text('20%'); // Mostrar el descuento en el campo correspondiente
+        } else {
+            $('#descuento').text('0%'); // Sin descuento
+        }
+
+        return descuentoAplicado;
+    }
+
+    // Llama a la función cuando se cambian los productos seleccionados
+    $('select[name="producto_id"]').on('change', aplicarDescuento);
+});
 // Puedes agregar aquí lógica de AJAX, manejo de formularios, etc.
 
 // Ejemplo: Mostrar mensaje de éxito si existe

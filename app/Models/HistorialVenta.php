@@ -31,6 +31,7 @@ class HistorialVenta extends Model
         'total' => 'decimal:2',
     ];
 
+    
     public function producto()
     {
         return $this->belongsTo(Producto::class, 'producto_id');

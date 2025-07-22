@@ -13,7 +13,7 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="producto_id">Producto</label>
-                    <select class="form-control" id="producto_id" name="producto_id" required>
+                    <select class="form-control" id="producto_id" name="productos[0][producto_id]" required>
                         <option value="">Seleccione...</option>
                         @foreach($productos as $producto)
                             <option value="{{ $producto->id }}">{{ $producto->nombres }}</option>
@@ -22,9 +22,22 @@
                 </div>
                 <div class="form-group col-md-2">
                     <label for="cantidad_venta">Cantidad</label>
-                    <input type="number" class="form-control" id="cantidad_venta" name="cantidad_venta" min="1" required>
+                    <input type="number" class="form-control" id="cantidad_venta" name="productos[0][cantidad_venta]" min="1" required>
                 </div>
                 <div class="form-group col-md-4">
+                    <label for="producto_id_2">Producto 2</label>
+                    <select class="form-control" id="producto_id_2" name="productos[1][producto_id]" optional>
+                        <option value="">Seleccione...</option>
+                        @foreach($productos as $producto)
+                            <option value="{{ $producto->id }}">{{ $producto->nombres }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="cantidad_venta_2">Cantidad 2</label>
+                    <input type="number" class="form-control" id="cantidad_venta_2" name="productos[1][cantidad_venta]" min="1" optional>
+                </div>
+                    <div class="form-group col-md-4">
                     <label for="usuario_id">usuario</label>
                     <select class="form-control" id="usuario_id" name="usuario_id" required>
                         <option value="">Seleccione...</option>
@@ -45,8 +58,8 @@
         <thead>
             <tr>
                 <th>Fecha</th>
-                <th>Producto</th>
-                <th>Cantidad</th>
+                <th>Productos</th>
+                <th>Cantidad Total</th>
                 <th>Subtotal</th>
                 <th>Descuento</th>
                 <th>Total</th>
