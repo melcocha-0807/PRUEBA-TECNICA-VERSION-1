@@ -16,6 +16,7 @@ body {
 }
 
 .container, .card {
+    overflow: hidden;
     background: var(--main-white);
     border-radius: 14px;
     box-shadow: 0 2px 16px var(--main-lilac);

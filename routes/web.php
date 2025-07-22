@@ -27,8 +27,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth', 'role:usuario'])->group(function () {
     Route::get('/home', [UsuarioController::class, 'home'])->name('usuario.home');
-    Route::get('/perfil', [UsuarioController::class, 'perfil'])->name('usuario.perfil');
-    Route::put('/perfil', [UsuarioController::class, 'updatePerfil'])->name('usuario.perfil.update');
     Route::get('/catalogo', [UsuarioController::class, 'home'])->name('usuario.catalogo');
 
     // Rutas del carrito

@@ -123,6 +123,7 @@ h3 {
    ======================================== */
 
 .container {
+    overflow: hidden;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
@@ -433,44 +434,6 @@ label {
 /* ========================================
    MODALES
    ======================================== */
-
-.modal-content {
-    border: none;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-
-.modal-header {
-    background: linear-gradient(135deg, var(--main-purple), var(--main-lilac));
-    color: white;
-    border-bottom: none;
-    border-radius: 20px 20px 0 0;
-    padding: 1.5rem;
-}
-
-.modal-title {
-    font-weight: 600;
-    margin: 0;
-}
-
-.modal-body {
-    padding: 2rem;
-}
-
-.modal-footer {
-    border-top: 1px solid var(--border-light);
-    padding: 1rem 2rem;
-}
-
-.close {
-    color: white;
-    opacity: 1;
-    text-shadow: none;
-}
-
-.close:hover {
-    opacity: 0.8;
-}
 
 /* ========================================
    IMÁGENES DE PRODUCTOS

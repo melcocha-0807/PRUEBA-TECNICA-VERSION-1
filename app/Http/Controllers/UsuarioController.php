@@ -29,30 +29,6 @@ class UsuarioController extends Controller
         return view('usuario.perfil', compact('usuario'));
     }
 
-    // Actualizar perfil
-    public function updatePerfil(Request $request)
-    {
-        $usuario = Auth::user();
-
-        $data = $request->validate([
-            'identificacion' => 'required|string|max:45',
-            'nombres'        => 'required|string|max:200',
-            'apellidos'      => 'required|string|max:200',
-            'email'          => 'required|email|max:150|unique:usuarios,email,' . $usuario->id,
-            'telefono'       => 'required|string|max:45',
-            'password'       => 'nullable|string|min:6',
-        ]);
-
-        if (!empty($data['password'])) {
-            $data['password'] = bcrypt($data['password']);
-        } else {
-            unset($data['password']); // No se actualiza si queda en blanco
-        }
-
-        $usuario->update($data);
-        return back()->with('success', 'Perfil actualizado correctamente');
-    }
-
     // Detalle de producto
     public function detalleProducto($id)
     {
@@ -64,6 +40,10 @@ class UsuarioController extends Controller
     public function carrito()
     {
         $carrito = session('carrito', []);
+        $carrito = array_map(function($item) {
+            $item->producto = Producto::with('categoria')->find($item->producto->id);
+            return $item;
+        }, $carrito);
         return view('usuario.carrito', compact('carrito'));
     }
 

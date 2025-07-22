@@ -31,7 +31,7 @@
                     @endphp
                     <tr>
                         <td>{{ $item->producto->nombres }}</td>
-                        <td>{{ $item->producto->categoria->nombre_categoria }}</td>
+                        <td>{{ $item->producto->categoria->nuevo_nombre ?? 'Sin categoría' }}</td>
                         <td>{{ $item->cantidad }}</td>
                         <td>${{ number_format($precio, 0) }}</td>
                         <td>{{ $descuento }}%</td>
