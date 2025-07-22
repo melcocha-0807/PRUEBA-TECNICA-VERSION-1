@@ -1,0 +1,755 @@
+/* ========================================
+   SISTEMA POS - CSS UNIFICADO
+   Tema: Púrpura/Lila moderno y profesional
+   ======================================== */
+
+/* Variables CSS principales */
+:root {
+    --main-purple: #7c3aed;
+    --main-lilac: #a78bfa;
+    --main-dark: #5b21b6;
+    --main-light: #ede9fe;
+    --main-lighter: #f3f4f6;
+    --text-dark: #1f2937;
+    --text-muted: #6b7280;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --border-light: #e5e7eb;
+    --shadow-light: rgba(124, 58, 237, 0.08);
+    --shadow-medium: rgba(124, 58, 237, 0.15);
+}
+
+/* ========================================
+   ESTILOS BASE
+   ======================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--main-light) 0%, #faf9ff 100%);
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* ========================================
+   NAVEGACIÓN
+   ======================================== */
+
+.navbar {
+    background: linear-gradient(135deg, var(--main-dark) 0%, var(--main-purple) 100%) !important;
+    box-shadow: 0 2px 20px var(--shadow-medium);
+    padding: 1rem 0;
+    border: none;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white !important;
+    text-decoration: none;
+}
+
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem !important;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: white !important;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ========================================
+   TÍTULOS Y TEXTO
+   ======================================== */
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--main-dark);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--main-dark), var(--main-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+.display-4 {
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--main-dark), var(--main-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.lead {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* ========================================
+   CONTENEDORES Y CARDS
+   ======================================== */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.card {
+    background: white;
+    border: 1px solid var(--border-light);
+    border-radius: 15px;
+    box-shadow: 0 4px 25px var(--shadow-light);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 40px var(--shadow-medium);
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--main-purple), var(--main-lilac));
+    color: white;
+    border-bottom: none;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    color: var(--main-dark);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.card-text {
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+/* ========================================
+   BOTONES
+   ======================================== */
+
+.btn {
+    font-weight: 500;
+    border-radius: 25px;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--main-purple), var(--main-lilac)) !important;
+    border: none !important;
+    color: white !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background: linear-gradient(135deg, var(--main-dark), var(--main-purple)) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--shadow-medium) !important;
+}
+
+.btn-secondary {
+    background: var(--main-lighter) !important;
+    color: var(--text-dark) !important;
+    border: 1px solid var(--border-light) !important;
+}
+
+.btn-secondary:hover {
+    background: var(--main-light) !important;
+    color: var(--main-dark) !important;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--success), #34d399) !important;
+    color: white !important;
+    border: none !important;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #059669, var(--success)) !important;
+    transform: translateY(-2px);
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, var(--warning), #fbbf24) !important;
+    color: white !important;
+    border: none !important;
+}
+
+.btn-warning:hover {
+    background: linear-gradient(135deg, #d97706, var(--warning)) !important;
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--danger), #f87171) !important;
+    color: white !important;
+    border: none !important;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #dc2626, var(--danger)) !important;
+    transform: translateY(-2px);
+}
+
+.btn-outline-secondary {
+    color: var(--main-purple) !important;
+    border: 2px solid var(--main-purple) !important;
+    background: transparent !important;
+}
+
+.btn-outline-secondary:hover {
+    background: var(--main-purple) !important;
+    color: white !important;
+}
+
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+.btn-block,
+.w-100 {
+    width: 100%;
+}
+
+.btn-link {
+    color: var(--main-purple) !important;
+    text-decoration: none !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.btn-link:hover {
+    color: var(--main-dark) !important;
+    text-decoration: underline !important;
+}
+
+/* ========================================
+   FORMULARIOS
+   ======================================== */
+
+.form-control,
+.form-select {
+    border: 2px solid var(--border-light);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--main-purple) !important;
+    box-shadow: 0 0 0 0.25rem rgba(124, 58, 237, 0.15) !important;
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.form-label,
+label {
+    font-weight: 600;
+    color: var(--main-dark);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -7.5px;
+    margin-left: -7.5px;
+}
+
+.form-row > .col,
+.form-row > [class*="col-"] {
+    padding-right: 7.5px;
+    padding-left: 7.5px;
+}
+
+.form-control-file {
+    border: 2px dashed var(--main-lilac);
+    border-radius: 10px;
+    padding: 1rem;
+    background: var(--main-light);
+    transition: all 0.3s ease;
+}
+
+.form-control-file:hover {
+    border-color: var(--main-purple);
+    background: white;
+}
+
+/* ========================================
+   TABLAS
+   ======================================== */
+
+.table {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 25px var(--shadow-light);
+    border: none;
+    margin-bottom: 2rem;
+}
+
+.table thead th {
+    background: linear-gradient(135deg, var(--main-purple), var(--main-lilac)) !important;
+    color: white !important;
+    border: none !important;
+    font-weight: 600;
+    padding: 1rem;
+    text-align: center;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background-color: var(--main-light);
+    transform: scale(1.01);
+}
+
+.table tbody td {
+    padding: 1rem;
+    vertical-align: middle;
+    border: none;
+}
+
+.table-bordered {
+    border: none;
+}
+
+/* ========================================
+   ALERTAS
+   ======================================== */
+
+.alert {
+    border: none;
+    border-radius: 15px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #d1fae5, #ecfdf5);
+    color: #065f46;
+    border-left: 4px solid var(--success);
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #fecaca, #fef2f2);
+    color: #991b1b;
+    border-left: 4px solid var(--danger);
+}
+
+.alert-warning {
+    background: linear-gradient(135deg, #fed7aa, #fffbeb);
+    color: #92400e;
+    border-left: 4px solid var(--warning);
+}
+
+.alert-info,
+.alert-primary {
+    background: linear-gradient(135deg, var(--main-light), #faf9ff);
+    color: var(--main-dark);
+    border-left: 4px solid var(--main-purple);
+}
+
+.alert ul {
+    margin: 0;
+    padding-left: 1rem;
+}
+
+.alert-dismissible .btn-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    opacity: 0.7;
+}
+
+/* ========================================
+   MODALES
+   ======================================== */
+
+.modal-content {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    background: linear-gradient(135deg, var(--main-purple), var(--main-lilac));
+    color: white;
+    border-bottom: none;
+    border-radius: 20px 20px 0 0;
+    padding: 1.5rem;
+}
+
+.modal-title {
+    font-weight: 600;
+    margin: 0;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border-light);
+    padding: 1rem 2rem;
+}
+
+.close {
+    color: white;
+    opacity: 1;
+    text-shadow: none;
+}
+
+.close:hover {
+    opacity: 0.8;
+}
+
+/* ========================================
+   IMÁGENES DE PRODUCTOS
+   ======================================== */
+
+.imagen-producto-container {
+    width: 100px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.imagen-producto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.imagen-producto:hover {
+    transform: scale(1.1);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+/* ========================================
+   UTILIDADES
+   ======================================== */
+
+.text-center {
+    text-align: center;
+}
+
+.text-end {
+    text-align: right;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.text-danger {
+    color: var(--danger) !important;
+}
+
+.text-success {
+    color: var(--success) !important;
+}
+
+.mb-0 { margin-bottom: 0 !important; }
+.mb-1 { margin-bottom: 0.25rem !important; }
+.mb-2 { margin-bottom: 0.5rem !important; }
+.mb-3 { margin-bottom: 1rem !important; }
+.mb-4 { margin-bottom: 1.5rem !important; }
+.mb-5 { margin-bottom: 3rem !important; }
+
+.mt-1 { margin-top: 0.25rem !important; }
+.mt-2 { margin-top: 0.5rem !important; }
+.mt-3 { margin-top: 1rem !important; }
+.mt-4 { margin-top: 1.5rem !important; }
+.mt-5 { margin-top: 3rem !important; }
+
+.py-4 { padding: 1.5rem 0 !important; }
+.py-5 { padding: 3rem 0 !important; }
+
+.d-flex { display: flex !important; }
+.d-inline { display: inline !important; }
+.d-inline-block { display: inline-block !important; }
+
+.justify-content-center { justify-content: center !important; }
+.align-items-center { align-items: center !important; }
+.align-self-end { align-self: flex-end !important; }
+
+.gap-3 { gap: 1rem !important; }
+
+.h-100 { height: 100% !important; }
+
+.shadow-sm {
+    box-shadow: 0 2px 15px var(--shadow-light) !important;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+footer {
+    background: linear-gradient(135deg, var(--main-dark), var(--main-purple));
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .form-row {
+        margin: 0;
+    }
+    
+    .form-row > .col,
+    .form-row > [class*="col-"] {
+        padding: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .table {
+        font-size: 0.875rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    .modal-body {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-nav {
+        text-align: center;
+    }
+    
+    .navbar-nav .nav-link {
+        margin: 0.25rem 0;
+    }
+    
+    .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    .card {
+        margin-bottom: 1rem;
+    }
+    
+    .table {
+        font-size: 0.8rem;
+    }
+    
+    .form-control {
+        font-size: 16px; /* Evita zoom en iOS */
+    }
+}
+
+/* ========================================
+   ANIMACIONES Y TRANSICIONES
+   ======================================== */
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+.container > * {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.navbar {
+    animation: slideIn 0.8s ease-out;
+}
+
+/* ========================================
+   ESTILOS ESPECÍFICOS POR PÁGINA
+   ======================================== */
+
+/* Página de bienvenida */
+.welcome-hero {
+    background: linear-gradient(135deg, var(--main-light), #faf9ff);
+    border-radius: 20px;
+    padding: 3rem;
+    margin: 2rem 0;
+}
+
+/* Formularios de login/registro */
+.auth-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 40px var(--shadow-medium);
+}
+
+/* Dashboard cards */
+.dashboard-card {
+    background: linear-gradient(135deg, white, var(--main-light));
+    border: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+}
+
+.dashboard-card:hover {
+    background: linear-gradient(135deg, var(--main-light), white);
+}
+
+/* Panel de productos */
+.productos-header {
+    background: linear-gradient(135deg, var(--main-purple), var(--main-lilac));
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+}
+
+/* Carrito */
+.carrito-total {
+    background: linear-gradient(135deg, var(--main-light), #faf9ff);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid var(--main-lilac);
+}
+
+/* Efectos hover mejorados */
+.card:hover,
+.btn:hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Estados de carga */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--main-purple);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
